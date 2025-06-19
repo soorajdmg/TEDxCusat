@@ -7,6 +7,23 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 
+const app = express();
+app.use(helmet());
+app.use(compression());
+app.use(cors({
+  origin: ['https://tedxcusat-sooraj.onrender.com', 'http://localhost:5173'],
+  credentials: true
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  console.log('Request headers:', req.headers);
+  next();
+});
+
 // Add this to your server.js file, right after your imports
 console.log('🚀 Starting server...');
 console.log('MongoDB URI exists:', !!process.env.MONGODB_URI);
@@ -102,23 +119,6 @@ app.get('/api/db-status', async (req, res) => {
   }
 });
 
-const app = express();
-app.use(helmet());
-app.use(compression());
-app.use(cors({
-  origin: ['https://tedxcusat-sooraj.onrender.com', 'http://localhost:5173'],
-  credentials: true
-}));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
-app.use((req, res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.url}`);
-  console.log('Request headers:', req.headers);
-  next();
-});
-
 const listEndpoints = () => {
   if (!app._router || !app._router.stack) {
     console.log('No routes have been registered yet.');
@@ -149,19 +149,11 @@ app.use('/api/auth', authRoutes);
 
 listEndpoints();
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 30000,
-  socketTimeoutMS: 45000,
-  bufferMaxEntries: 0,
-  maxPoolSize: 10,
-  minPoolSize: 5,
+  useUnifiedTopology: true
 }).then(() => console.log('MongoDB Connected'))
-  .catch((err) => {
-    console.error('MongoDB connection failed:', err.message);
-    console.error('Full error:', err);
-  });
+  .catch(err => console.log(err));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
