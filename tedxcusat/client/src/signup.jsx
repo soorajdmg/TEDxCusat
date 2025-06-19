@@ -77,7 +77,7 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
         setError('');
 
         try {
-            const signupResponse = await fetch('http://localhost:5000/api/auth/google-signup', {
+            const signupResponse = await fetch('https://tedxcusat-backend.onrender.com/api/auth/google-signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
             } else if (signupResponse.status === 409) {
                 console.log("User already exists, attempting login...");
 
-                const loginResponse = await fetch('http://localhost:5000/api/auth/google-login', {
+                const loginResponse = await fetch('https://tedxcusat-backend.onrender.com/api/auth/google-login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -247,7 +247,7 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/signup', {
+            const response = await fetch('https://tedxcusat-backend.onrender.com/api/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

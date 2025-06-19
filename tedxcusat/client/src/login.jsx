@@ -90,7 +90,7 @@ const Login = ({ onClose, onSwitchToSignup, onLoginSuccess }) => {
             const googleUserInfo = decodeJWT(response.credential);
             console.log("Decoded Google user info:", googleUserInfo);
 
-            const loginResponse = await fetch('http://localhost:5000/api/auth/google-login', {
+            const loginResponse = await fetch('https://tedxcusat-backend.onrender.com/api/auth/google-login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ const Login = ({ onClose, onSwitchToSignup, onLoginSuccess }) => {
             } else if (loginResponse.status === 404 || loginResponse.status === 401) {
                 console.log("User doesn't exist, attempting signup...");
 
-                const signupResponse = await fetch('http://localhost:5000/api/auth/google-signup', {
+                const signupResponse = await fetch('https://tedxcusat-backend.onrender.com/api/auth/google-signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -216,7 +216,7 @@ const Login = ({ onClose, onSwitchToSignup, onLoginSuccess }) => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch('https://tedxcusat-backend.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

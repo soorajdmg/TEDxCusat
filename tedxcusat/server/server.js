@@ -11,7 +11,7 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://tedxcusat-sooraj.onrender.com',
   credentials: true
 }));
 app.use(express.json());
