@@ -89,11 +89,6 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
                 }),
             });
 
-            console.log('=== FRONTEND DEBUG ===');
-            console.log('Request URL:', '/api/auth/google-signup');
-            console.log('Request headers:', signupResponse.headers);
-            console.log('Request body:', signupResponse.body);
-
             const signupResult = await signupResponse.json();
 
             if (signupResponse.ok) {

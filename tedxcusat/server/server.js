@@ -63,7 +63,10 @@ mongoose.connect(process.env.MONGODB_URI, {
   maxPoolSize: 10,
   minPoolSize: 5,
 }).then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .catch((err) => {
+    console.error('MongoDB connection failed:', err.message);
+    console.error('Full error:', err);
+  });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
