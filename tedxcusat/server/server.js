@@ -7,6 +7,101 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 
+// Add this to your server.js file, right after your imports
+console.log('🚀 Starting server...');
+console.log('MongoDB URI exists:', !!process.env.MONGODB_URI);
+console.log('MongoDB URI preview:', process.env.MONGODB_URI?.substring(0, 20) + '...');
+
+// Replace your current mongoose.connect with this:
+const connectDB = async () => {
+  try {
+    console.log('🔄 Attempting to connect to MongoDB...');
+
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 10000, // 10 seconds
+      socketTimeoutMS: 20000, // 20 seconds
+      maxPoolSize: 5,
+      minPoolSize: 1,
+    });
+
+    console.log('✅ MongoDB Connected Successfully!');
+    console.log('Database:', conn.connection.db.databaseName);
+    console.log('Host:', conn.connection.host);
+    console.log('Ready State:', conn.connection.readyState);
+
+    // Test a simple operation
+    const collections = await conn.connection.db.listCollections().toArray();
+    console.log('📚 Available collections:', collections.map(c => c.name));
+
+  } catch (error) {
+    console.error('❌ MongoDB Connection Failed:');
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error code:', error.code);
+
+    // Exit the process if we can't connect to the database
+    process.exit(1);
+  }
+};
+
+// Call the connection function
+connectDB();
+
+// Add connection event listeners
+mongoose.connection.on('connected', () => {
+  console.log('🟢 Mongoose connected');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('🔴 Mongoose error:', err.message);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('🟡 Mongoose disconnected');
+});
+
+// Add a test route to check database status
+app.get('/api/db-status', async (req, res) => {
+  try {
+    const dbState = mongoose.connection.readyState;
+    const stateNames = {
+      0: 'disconnected',
+      1: 'connected',
+      2: 'connecting',
+      3: 'disconnecting'
+    };
+
+    console.log('DB Status check - Ready State:', dbState, stateNames[dbState]);
+
+    if (dbState === 1) {
+      // Try a simple query
+      const testQuery = await mongoose.connection.db.admin().ping();
+      console.log('DB Ping successful:', testQuery);
+
+      res.json({
+        status: 'connected',
+        readyState: dbState,
+        stateName: stateNames[dbState],
+        ping: testQuery
+      });
+    } else {
+      res.status(500).json({
+        status: 'not connected',
+        readyState: dbState,
+        stateName: stateNames[dbState]
+      });
+    }
+  } catch (error) {
+    console.error('DB Status error:', error);
+    res.status(500).json({
+      status: 'error',
+      message: error.message
+    });
+  }
+});
+
 const app = express();
 app.use(helmet());
 app.use(compression());
