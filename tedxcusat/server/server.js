@@ -5,13 +5,13 @@ const helmet = require('helmet');
 const compression = require('compression');
 require('dotenv').config();
 
- const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(cors({
-  origin: 'https://tedxcusat-sooraj.onrender.com',
+  origin: ['https://tedxcusat-sooraj.onrender.com', 'http://localhost:5173'],
   credentials: true
 }));
 app.use(express.json());
@@ -54,9 +54,14 @@ app.use('/api/auth', authRoutes);
 
 listEndpoints();
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000,
+  socketTimeoutMS: 45000,
+  bufferMaxEntries: 0,
+  maxPoolSize: 10,
+  minPoolSize: 5,
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
