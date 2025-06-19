@@ -129,13 +129,13 @@ const Hero = () => {
                     <div className="detail-icon-wrapper">
                       <Clock className="detail-icon" />
                     </div>
-                    <span>6:00 PM - 9:00 PM</span>
+                    <span>4:30 PM - 7:00 PM</span>
                   </div>
                   <div className="detail-item">
                     <div className="detail-icon-wrapper">
                       <MapPin className="detail-icon" />
                     </div>
-                    <span>CUSAT Auditorium</span>
+                    <span>Seminar Complex</span>
                   </div>
                   <div className="detail-item">
                     <div className="detail-icon-wrapper">
