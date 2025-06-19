@@ -17,7 +17,6 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use((req, res, next) => {
   console.log(`Incoming request: ${req.method} ${req.url}`);
   console.log('Request headers:', req.headers);
@@ -26,15 +25,15 @@ app.use((req, res, next) => {
 
 // Add this to your server.js file, right after your imports
 console.log('🚀 Starting server...');
-console.log('MongoDB URI exists:', !!process.env.MONGODB_URI);
-console.log('MongoDB URI preview:', process.env.MONGODB_URI?.substring(0, 20) + '...');
+console.log('MongoDB URI exists:', !!process.env.MONGO_URI);
+console.log('MongoDB URI preview:', process.env.MONGO_URI?.substring(0, 20) + '...');
 
 // Replace your current mongoose.connect with this:
 const connectDB = async () => {
   try {
     console.log('🔄 Attempting to connect to MongoDB...');
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 10000, // 10 seconds
@@ -144,16 +143,16 @@ const listEndpoints = () => {
   });
 };
 
-
 app.use('/api/auth', authRoutes);
 
 listEndpoints();
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+// ❌ REMOVED: Duplicate MongoDB connection
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// }).then(() => console.log('MongoDB Connected'))
+//   .catch(err => console.log(err));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

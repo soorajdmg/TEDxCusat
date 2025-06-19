@@ -26,11 +26,9 @@ class Database {
 
       console.log('MongoDB connected successfully');
 
-
       mongoose.connection.on('error', this.handleError.bind(this));
       mongoose.connection.on('disconnected', this.handleDisconnect.bind(this));
       mongoose.connection.on('reconnected', this.handleReconnect.bind(this));
-
 
       process.on('SIGINT', this.gracefulShutdown.bind(this));
       process.on('SIGTERM', this.gracefulShutdown.bind(this));
