@@ -1,0 +1,527 @@
+.signup-modal {
+  max-width: 460px;
+  max-height: 85vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(239, 68, 68, 0.6) rgba(255, 255, 255, 0.1);
+}
+
+
+.signup-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.signup-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 8px 0;
+
+  transition: none;
+}
+
+.signup-modal::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.6);
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  will-change: background-color;
+}
+
+.signup-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.signup-modal::-webkit-scrollbar-thumb:active {
+  background: rgba(239, 68, 68, 0.9);
+}
+
+
+.password-strength {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.strength-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  transition: all 0.2s ease;
+  border-radius: 2px;
+  will-change: width, background-color;
+  transform: translateZ(0);
+}
+
+.strength-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  min-width: 60px;
+  text-align: right;
+  transition: color 0.2s ease;
+}
+
+
+.checkbox-group {
+  margin-top: 0.5rem;
+}
+
+.checkbox-group .checkbox-container {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.terms-link {
+  color: #ef4444;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.terms-link:hover {
+  color: #dc2626;
+  text-decoration: underline;
+}
+
+
+.form-group input.error {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  animation: shake 0.4s ease-in-out;
+}
+
+.form-group input.success {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.validation-message {
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.validation-message.error {
+  color: #fca5a5;
+}
+
+.validation-message.success {
+  color: #86efac;
+}
+
+.validation-icon {
+  font-size: 0.9rem;
+}
+
+
+.password-requirements {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  animation: slideDown 0.2s ease;
+}
+
+.password-requirements h4 {
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.password-requirements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.password-requirements li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease;
+}
+
+.password-requirements li::before {
+  content: '○';
+  font-size: 0.7rem;
+  transition: all 0.2s ease;
+}
+
+.password-requirements li.met {
+  color: #22c55e;
+}
+
+.password-requirements li.met::before {
+  content: '●';
+  color: #22c55e;
+}
+
+
+.checkbox-group .checkbox-container {
+  padding-left: 2rem;
+  position: relative;
+}
+
+.checkbox-group .checkmark {
+  width: 20px;
+  height: 20px;
+  left: 0;
+}
+
+.checkbox-group .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+}
+
+
+.signup-progress {
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.progress-title {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.progress-percentage {
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  border-radius: 3px;
+  transition: width 0.2s ease;
+  will-change: width;
+  transform: translateZ(0);
+}
+
+
+.social-signup-note {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.form-group.has-error input {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  transition: all 0.2s ease;
+}
+
+.form-group.has-success input {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  transition: all 0.2s ease;
+}
+
+.field-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.field-icon.success {
+  color: #22c55e;
+}
+
+.field-icon.error {
+  color: #ef4444;
+}
+
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  padding-right: 3rem;
+}
+
+
+.signup-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.loading-content {
+  text-align: center;
+  color: #ffffff;
+}
+
+.loading-spinner-large {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ef4444;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
+.signup-success {
+  text-align: center;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  animation: scaleIn 0.3s ease;
+}
+
+.success-icon::after {
+  content: '✓';
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.success-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.success-message {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@media (max-width: 480px) {
+  .signup-modal {
+    max-height: 90vh;
+    padding: 1.25rem;
+  }
+
+  .password-strength {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+  }
+
+  .strength-label {
+    text-align: left;
+    min-width: auto;
+  }
+
+  .checkbox-group .checkbox-container {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    padding-left: 1.75rem;
+  }
+
+  .social-btn {
+    padding: 0.75rem;
+  }
+
+  .social-icon {
+    font-size: 1rem;
+  }
+
+  .password-requirements {
+    padding: 0.75rem;
+  }
+
+  .signup-progress {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .auth-modal {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .form-group input {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-submit {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+
+.signup-modal * {
+  box-sizing: border-box;
+}
+
+
+.signup-modal {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+
+.form-group input,
+.auth-submit,
+.social-btn,
+.terms-link {
+  transition-property: border-color, background-color, box-shadow, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .signup-modal {
+    scroll-behavior: auto;
+  }
+}
