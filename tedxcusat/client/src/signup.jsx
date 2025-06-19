@@ -76,11 +76,7 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
         setGoogleLoading(true);
         setError('');
 
-        console.log('=== FRONTEND DEBUG ===');
-        console.log('Request URL:', '/api/auth/google-signup');
-        console.log('Request method:', requestData.method);
-        console.log('Request headers:', requestData.headers);
-        console.log('Request body:', requestData.body);
+
 
         try {
             const signupResponse = await fetch('https://tedxcusat-backend.onrender.com/api/auth/google-signup', {
@@ -92,6 +88,11 @@ const Signup = ({ onClose, onSwitchToLogin, onSignupSuccess }) => {
                     credential: response.credential
                 }),
             });
+
+            console.log('=== FRONTEND DEBUG ===');
+            console.log('Request URL:', '/api/auth/google-signup');
+            console.log('Request headers:', signupResponse.headers);
+            console.log('Request body:', signupResponse.body);
 
             const signupResult = await signupResponse.json();
 
