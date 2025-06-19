@@ -1,10 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Calendar, MapPin, Users, ArrowRight, Play, Clock, Star, Volume2, VolumeX } from 'lucide-react';
 import './hero.css';
 
 const Hero = () => {
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = React.useState(true);
+  const panelVideoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoStatus, setVideoStatus] = useState({
+    mainVideo: 'loading',
+    panelVideo: 'loading'
+  });
 
   useEffect(() => {
     const createParticles = () => {
@@ -23,22 +28,77 @@ const Hero = () => {
     };
     createParticles();
 
+    // Enhanced video debugging
+    const setupVideo = (videoElement, videoName) => {
+      if (!videoElement) return;
 
-    if (videoRef.current) {
-      const playPromise = videoRef.current.play();
+      const handleLoadStart = () => {
+        console.log(`✅ ${videoName} loading started`);
+        setVideoStatus(prev => ({ ...prev, [videoName]: 'loading' }));
+      };
+
+      const handleCanPlay = () => {
+        console.log(`✅ ${videoName} can play`);
+        setVideoStatus(prev => ({ ...prev, [videoName]: 'canplay' }));
+      };
+
+      const handleError = (e) => {
+        console.error(`❌ ${videoName} error:`, e.target.error);
+        console.error(`Error details:`, {
+          code: e.target.error?.code,
+          message: e.target.error?.message,
+          src: e.target.src,
+          currentSrc: e.target.currentSrc
+        });
+        setVideoStatus(prev => ({ ...prev, [videoName]: 'error' }));
+      };
+
+      const handleLoadedData = () => {
+        console.log(`✅ ${videoName} data loaded`);
+        setVideoStatus(prev => ({ ...prev, [videoName]: 'loaded' }));
+      };
+
+      const handlePlay = () => {
+        console.log(`✅ ${videoName} started playing`);
+        setVideoStatus(prev => ({ ...prev, [videoName]: 'playing' }));
+      };
+
+      videoElement.addEventListener('loadstart', handleLoadStart);
+      videoElement.addEventListener('canplay', handleCanPlay);
+      videoElement.addEventListener('error', handleError);
+      videoElement.addEventListener('loadeddata', handleLoadedData);
+      videoElement.addEventListener('play', handlePlay);
+
+      // Try to play
+      const playPromise = videoElement.play();
       if (playPromise !== undefined) {
         playPromise
-          .then(() => console.log('Video playing successfully'))
-          .catch(error => console.error('Video play failed:', error));
+          .then(() => console.log(`✅ ${videoName} playing successfully`))
+          .catch(error => {
+            console.error(`❌ ${videoName} play failed:`, error);
+            setVideoStatus(prev => ({ ...prev, [videoName]: 'playError' }));
+          });
       }
-    }
 
+      return () => {
+        videoElement.removeEventListener('loadstart', handleLoadStart);
+        videoElement.removeEventListener('canplay', handleCanPlay);
+        videoElement.removeEventListener('error', handleError);
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('play', handlePlay);
+      };
+    };
+
+    const mainVideoCleanup = setupVideo(videoRef.current, 'mainVideo');
+    const panelVideoCleanup = setupVideo(panelVideoRef.current, 'panelVideo');
 
     return () => {
       const particlesContainer = document.querySelector('.particles-container');
       if (particlesContainer) {
         particlesContainer.innerHTML = '';
       }
+      mainVideoCleanup && mainVideoCleanup();
+      panelVideoCleanup && panelVideoCleanup();
     };
   }, []);
 
@@ -56,8 +116,33 @@ const Hero = () => {
     }
   };
 
+  // Debug function to test video URL
+  const testVideoUrl = () => {
+    const testUrl = '/tedx-event-vid.mp4';
+    window.open(testUrl, '_blank');
+  };
+
   return (
     <section id="home" className="hero">
+      {/* Debug Panel - Remove this in production */}
+      <div style={{
+        position: 'fixed',
+        top: '10px',
+        right: '10px',
+        background: 'rgba(0,0,0,0.8)',
+        color: 'white',
+        padding: '10px',
+        borderRadius: '5px',
+        fontSize: '12px',
+        zIndex: 9999
+      }}>
+        <div>Main Video: {videoStatus.mainVideo}</div>
+        <div>Panel Video: {videoStatus.panelVideo}</div>
+        <button onClick={testVideoUrl} style={{ marginTop: '5px', fontSize: '10px' }}>
+          Test Video URL
+        </button>
+      </div>
+
       <div className="video-background">
         <video
           ref={videoRef}
@@ -66,14 +151,12 @@ const Hero = () => {
           loop
           muted
           playsInline
-          onLoadStart={() => console.log('Video loading started')}
-          onCanPlay={() => console.log('Video can play')}
-          onError={(e) => console.error('Video error:', e.target.error)}
-          onLoadedData={() => console.log('Video data loaded')}
-          onPlay={() => console.log('Video started playing')}
-          onPause={() => console.log('Video paused')}
+          preload="metadata"
         >
           <source src="/tedx-event-vid.mp4" type="video/mp4" />
+          <div style={{ color: 'white', padding: '20px' }}>
+            Your browser does not support the video tag or the video failed to load.
+          </div>
         </video>
 
         <div className="video-overlay-gradient"></div>
@@ -99,10 +182,18 @@ const Hero = () => {
         <div className="event-main">
           <div className="event-left">
             <div className="content-glass-panel">
-              <video className="panel-background-video" autoPlay muted loop playsInline>
+              <video
+                ref={panelVideoRef}
+                className="panel-background-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src="/tedx-event-vid.mp4" type="video/mp4" />
               </video>
               <div className="panel-content">
-
                 <div className="event-header">
                   <h1 className="event-title">
                     <span className="title-line-1">Kaleidoscope:</span>
