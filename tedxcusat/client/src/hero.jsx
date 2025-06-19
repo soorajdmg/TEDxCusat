@@ -58,7 +58,6 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero">
-      {/* Video Background */}
       <div className="video-background">
         <video
           ref={videoRef}
@@ -74,16 +73,13 @@ const Hero = () => {
           onPlay={() => console.log('Video started playing')}
           onPause={() => console.log('Video paused')}
         >
-          <source src="/assets/tedx-event-vid.mp4" type="video/mp4" />
-          {/* <source src="/assets/tedx-event-vid.webm" type="video/webm" /> */}
+          <source src="/tedx-event-vid.mp4" type="video/mp4" />
         </video>
 
-        {/* Video overlay with sophisticated gradients */}
         <div className="video-overlay-gradient"></div>
         <div className="video-overlay-pattern"></div>
       </div>
 
-      {/* Enhanced Background Effects */}
       <div className="hero-background">
         <div className="gradient-overlay-enhanced"></div>
         <div className="glow-orb glow-orb-1"></div>
@@ -91,7 +87,6 @@ const Hero = () => {
         <div className="glow-orb glow-orb-3"></div>
         <div className="particles-container"></div>
 
-        {/* Floating geometric shapes */}
         <div className="floating-shapes">
           <div className="shape shape-1"></div>
           <div className="shape shape-2"></div>
@@ -101,13 +96,10 @@ const Hero = () => {
       </div>
 
       <div className="hero-content">
-        {/* Main Event Content with Glass Morphism */}
         <div className="event-main">
           <div className="event-left">
-            {/* Glass morphism container */}
             <div className="content-glass-panel">
               <video className="panel-background-video" autoPlay muted loop playsInline>
-                <source src="../public/tedx-event-vid.mp4" type="video/mp4" />
               </video>
               <div className="panel-content">
 
@@ -170,13 +162,9 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-          </div> {/* content-glass-panel closing */}
-
-
-
+          </div>
         </div>
 
-        {/* Event Stats with enhanced design */}
         <div className="event-stats">
           <div className="stat-item">
             <div className="stat-number">12+</div>
