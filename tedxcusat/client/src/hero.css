@@ -7,9 +7,8 @@
   overflow: hidden;
   background: #000000;
   padding: 4rem 0 2rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
-
 
 .video-background {
   position: absolute;
@@ -35,7 +34,6 @@
   filter: brightness(0.8) contrast(1.3) saturate(1.2);
   transform: scale(1.02);
 }
-
 
 .video-overlay-gradient {
   position: absolute;
@@ -71,7 +69,6 @@
   animation: patternMove 20s linear infinite;
 }
 
-
 .hero-background {
   position: absolute;
   inset: 0;
@@ -91,7 +88,6 @@
       rgba(239, 68, 68, 0.02) 60%,
       rgba(0, 0, 0, 0.4) 100%);
 }
-
 
 .glow-orb {
   position: absolute;
@@ -128,7 +124,6 @@
   animation-delay: 6s;
   transform: translate(-50%, -50%);
 }
-
 
 .floating-shapes {
   position: absolute;
@@ -183,7 +178,6 @@
   animation-delay: 12s;
 }
 
-
 .particles-container {
   position: absolute;
   width: 100%;
@@ -202,7 +196,6 @@
   box-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
 }
 
-
 .hero-content {
   position: relative;
   z-index: 10;
@@ -211,7 +204,6 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
-
 
 .event-badge-container {
   display: flex;
@@ -246,13 +238,15 @@
   animation: badgeShimmer 3s ease-in-out infinite;
 }
 
-
 .content-glass-panel {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2rem;
   width: 92vw;
+  max-width: 1400px;
+  margin: 0 auto;
+ 
   padding: 3rem;
   box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.3),
@@ -261,11 +255,10 @@
   overflow: hidden;
 }
 
-
 .panel-background-video {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -1rem;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -278,7 +271,6 @@
   z-index: 1;
 }
 
-
 .event-main {
   display: grid;
   grid-template-columns: 1fr 450px;
@@ -286,7 +278,6 @@
   align-items: stretch;
   margin-bottom: 4rem;
 }
-
 
 .event-header {
   display: flex;
@@ -328,7 +319,6 @@
   border-radius: 2px;
   animation: underlineGrow 2s ease-out forwards;
 }
-
 
 .event-date {
   position: relative;
@@ -373,7 +363,6 @@
   margin-top: 0.25rem;
 }
 
-
 .event-description {
   font-size: 1.2rem;
   color: #e5e7eb;
@@ -382,7 +371,6 @@
   margin-bottom: 2.5rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-
 
 .event-details {
   display: flex;
@@ -417,7 +405,6 @@
   height: 1.2rem;
   color: #ef4444;
 }
-
 
 .event-buttons {
   display: flex;
@@ -491,7 +478,6 @@
 .btn-primary:hover .btn-icon {
   transform: translateX(5px);
 }
-
 
 .featured-video-panel {
   background: rgba(0, 0, 0, 0.4);
@@ -622,7 +608,6 @@
   margin-top: 0.25rem;
 }
 
-
 .event-stats {
   display: flex;
   justify-content: center;
@@ -669,9 +654,6 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-
-
-
 
 
 @keyframes float {
@@ -898,7 +880,33 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (min-width: 1500px) {
+  .hero {
+    margin-top: 0rem;
+    padding: 1rem 0 2rem;
+  }
+
+  .event-badge-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .content-glass-panel {
+    width: 90vw;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .hero {
+    margin-top: 2.5rem;
+    padding: 1.8rem 0 2rem;
+  }
+}
+
+
+
+@media (max-width: 1399px) {
   .event-main {
     grid-template-columns: 1fr 400px;
     gap: 3rem;
@@ -906,10 +914,56 @@
 
   .content-glass-panel {
     padding: 2.5rem;
+    width: 90vw;
+    margin: 0 auto;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
   }
 }
 
-@media (max-width: 992px) {
+
+@media (max-width: 1199px) {
+  .content-glass-panel {
+    width: 88vw;
+    margin: 0 auto;
+  }
+
+  .event-main {
+    grid-template-columns: 1fr 350px;
+    gap: 2.5rem;
+  }
+
+  .featured-video-panel {
+    padding: 1.8rem;
+  }
+
+  .event-stats {
+    gap: 3rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .content-glass-panel {
+    width: 86vw;
+    margin: 0 auto;
+  }
+
+  .hero {
+    margin-top: 4rem;
+    padding: 3rem 0 1.5rem;
+  }
+
   .event-main {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -923,14 +977,38 @@
 
   .event-date {
     align-self: flex-start;
+    min-width: 110px;
+    padding: 1.2rem 0.8rem;
+  }
+
+  .date-main {
+    font-size: 2.2rem;
+  }
+
+  .date-month {
+    font-size: 1.1rem;
+  }
+
+  .event-description {
+    width: 90%;
+    font-size: 1.1rem;
   }
 
   .event-details {
-    gap: 1.5rem;
+    gap: 1.8rem;
+  }
+
+  .detail-item {
+    font-size: 0.95rem;
   }
 
   .event-stats {
     gap: 2.5rem;
+    padding: 2.5rem 0;
+  }
+
+  .stat-item .stat-number {
+    font-size: 2.2rem;
   }
 
   .glow-orb-1,
@@ -939,26 +1017,76 @@
     width: 15rem;
     height: 15rem;
   }
+
+  .event-badge {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+  }
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
+  .content-glass-panel {
+    padding: 2rem;
+    border-radius: 1.5rem;
+    width: 84vw;
+    margin: 0 auto;
+  }
+
   .hero {
     padding: 2rem 0 1rem;
-    margin-top: 4rem;
+    margin-top: 3.5rem;
+    min-height: 90vh;
   }
 
   .hero-content {
     padding: 0 1.5rem;
   }
 
-  .content-glass-panel {
-    padding: 2rem;
-    border-radius: 1.5rem;
-  }
-
   .featured-video-panel {
     padding: 1.5rem;
     border-radius: 1.5rem;
+  }
+
+  .event-badge-container {
+    margin-bottom: 2rem;
+  }
+
+  .event-badge {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  .title-underline {
+    width: 80%;
+    height: 3px;
+    margin-top: 0.8rem;
+  }
+
+  .event-description {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .event-details {
+    gap: 1.5rem;
+  }
+
+  .detail-icon-wrapper {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .detail-icon {
+    width: 1.1rem;
+    height: 1.1rem;
   }
 
   .event-buttons {
@@ -970,6 +1098,8 @@
   .btn-secondary {
     width: 100%;
     justify-content: center;
+    padding: 1.1rem 2rem;
+    font-size: 1rem;
   }
 
   .event-stats {
@@ -978,44 +1108,159 @@
     flex-wrap: wrap;
   }
 
+  .stat-item {
+    padding: 0.8rem;
+  }
+
   .stat-item .stat-number {
     font-size: 2rem;
   }
+
+  .stat-item .stat-label {
+    font-size: 0.9rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .live-indicator {
+    font-size: 0.8rem;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .video-stats {
+    gap: 0.8rem;
+  }
+
+  .stat-number {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+  }
+
+  .play-button-large {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    transform: scale(0.8);
+  }
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: 639px) {
+  .hero {
+    padding: 1.5rem 0 0.5rem;
+    margin-top: 3rem;
+    min-height: 85vh;
+  }
+
   .hero-content {
     padding: 0 1rem;
   }
 
   .content-glass-panel {
     padding: 1.5rem;
+    border-radius: 1.2rem;
+    width: 98vw;
+  }
+
+  .featured-video-panel {
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+  }
+
+  .event-badge {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    gap: 0.5rem;
   }
 
   .title-line-1,
   .title-line-2 {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 9vw, 3rem);
   }
 
   .event-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .event-details {
+    gap: 1.2rem;
     flex-direction: column;
-    gap: 1rem;
+  }
+
+  .detail-item {
+    font-size: 0.9rem;
+  }
+
+  .detail-icon-wrapper {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .detail-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 1.8rem;
+    font-size: 0.95rem;
   }
 
   .event-stats {
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: 1.8rem 0;
+    flex-direction: column;
+  }
+
+  .stat-item {
+    padding: 0.6rem;
   }
 
   .stat-item .stat-number {
-    font-size: 1.75rem;
+    font-size: 1.8rem;
   }
 
   .stat-item .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+  }
+
+  .date-main {
+    font-size: 2rem;
+  }
+
+  .date-month {
+    font-size: 1rem;
+  }
+
+  .date-year {
+    font-size: 0.9rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
   }
 
   .glow-orb-1,
@@ -1024,47 +1269,573 @@
     width: 10rem;
     height: 10rem;
   }
-
-  .floating-shapes .shape {
-    opacity: 0.05;
-  }
 }
 
 
-@media (prefers-contrast: high) {
-  .background-video {
-    opacity: 0.3;
+@media (max-width: 479px) {
+  .hero {
+    padding: 1rem 0 0.5rem;
+    margin-top: 2.5rem;
+    min-height: 80vh;
   }
 
-  .video-overlay-gradient {
-    background: rgba(0, 0, 0, 0.9);
+  .hero-content {
+    padding: 0 0.8rem;
   }
 
   .content-glass-panel {
-    background: rgba(0, 0, 0, 0.9);
-    border-color: #ef4444;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    width: 99vw;
+  }
+
+  .featured-video-panel {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .event-badge-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .event-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(1.6rem, 10vw, 2.5rem);
+  }
+
+  .title-underline {
+    width: 100%;
+    height: 2px;
+    margin-top: 0.6rem;
+  }
+
+  .event-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .event-details {
+    gap: 1rem;
+  }
+
+  .detail-item {
+    font-size: 0.85rem;
+  }
+
+  .detail-icon-wrapper {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .detail-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .event-date {
+    padding: 1rem 0.6rem;
+    min-width: 100px;
+  }
+
+  .date-main {
+    font-size: 1.8rem;
+  }
+
+  .date-month {
+    font-size: 0.95rem;
+  }
+
+  .date-year {
+    font-size: 0.85rem;
+  }
+
+  .event-stats {
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .stat-item .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .panel-header h3 {
+    font-size: 0.95rem;
+  }
+
+  .live-indicator {
+    font-size: 0.75rem;
+  }
+
+  .video-stats {
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 0.9rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .play-button-large {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    transform: scale(0.6);
   }
 }
 
 
-@media (prefers-reduced-motion: reduce) {
-  .background-video {
-    animation: none;
+@media (max-width: 374px) {
+  .hero {
+    margin-top: 2rem;
+    min-height: 75vh;
   }
 
-  .glow-orb,
-  .shape,
-  .particle,
-  .scroll-dot {
-    animation: none;
+  .hero-content {
+    padding: 0 0.5rem;
   }
 
-  .hero:hover .background-video {
-    transform: none;
+  .content-glass-panel {
+    padding: 1rem;
+    border-radius: 0.8rem;
   }
 
-  .btn-primary:hover,
-  .btn-secondary:hover {
-    transform: none;
+  .featured-video-panel {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(1.4rem, 11vw, 2.2rem);
+  }
+
+  .event-description {
+    font-size: 0.85rem;
+  }
+
+  .detail-item {
+    font-size: 0.8rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .event-date {
+    padding: 0.8rem 0.5rem;
+    min-width: 90px;
+  }
+
+  .date-main {
+    font-size: 1.6rem;
+  }
+
+  .date-month {
+    font-size: 0.9rem;
+  }
+
+  .event-stats {
+    padding: 1.2rem 0;
+  }
+
+  .stat-item .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    transform: scale(0.5);
+  }
+}
+
+@media (max-width: 639px) {
+  .content-glass-panel {
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    width: 82vw;
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding: 1.5rem 0 0.5rem;
+    margin-top: 3rem;
+    min-height: 85vh;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+
+  .featured-video-panel {
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+  }
+
+  .event-badge {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(1.8rem, 9vw, 3rem);
+  }
+
+  .event-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .event-details {
+    gap: 1.2rem;
+    flex-direction: column;
+  }
+
+  .detail-item {
+    font-size: 0.9rem;
+  }
+
+  .detail-icon-wrapper {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .detail-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  .event-stats {
+    gap: 1.5rem;
+    padding: 1.8rem 0;
+    flex-direction: column;
+  }
+
+  .stat-item {
+    padding: 0.6rem;
+  }
+
+  .stat-item .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .date-main {
+    font-size: 2rem;
+  }
+
+  .date-month {
+    font-size: 1rem;
+  }
+
+  .date-year {
+    font-size: 0.9rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+
+
+@media (max-width: 479px) {
+  .content-glass-panel {
+    padding: 1.2rem;
+    border-radius: 1rem;
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .hero {
+    padding: 1rem 0 0.5rem;
+    margin-top: 2.5rem;
+    min-height: 80vh;
+  }
+
+  .hero-content {
+    padding: 0 0.8rem;
+  }
+
+  .featured-video-panel {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .event-badge-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .event-badge {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(1.6rem, 10vw, 2.5rem);
+  }
+
+  .title-underline {
+    width: 100%;
+    height: 2px;
+    margin-top: 0.6rem;
+  }
+
+  .event-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .event-details {
+    gap: 1rem;
+  }
+
+  .detail-item {
+    font-size: 0.85rem;
+  }
+
+  .detail-icon-wrapper {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .detail-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .event-date {
+    padding: 1rem 0.6rem;
+    min-width: 100px;
+  }
+
+  .date-main {
+    font-size: 1.8rem;
+  }
+
+  .date-month {
+    font-size: 0.95rem;
+  }
+
+  .date-year {
+    font-size: 0.85rem;
+  }
+
+  .event-stats {
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .stat-item .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+
+  .panel-header h3 {
+    font-size: 0.95rem;
+  }
+
+  .live-indicator {
+    font-size: 0.75rem;
+  }
+
+  .video-stats {
+    gap: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 0.9rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .play-button-large {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    transform: scale(0.6);
+  }
+}
+
+
+@media (max-width: 374px) {
+  .content-glass-panel {
+    padding: 1rem;
+    border-radius: 0.8rem;
+    width: 78vw;
+    margin: 0 auto;
+  }
+
+  .hero {
+    margin-top: 2rem;
+    min-height: 75vh;
+  }
+
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+
+  .featured-video-panel {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: clamp(1.4rem, 11vw, 2.2rem);
+  }
+
+  .event-description {
+    font-size: 0.85rem;
+  }
+
+  .detail-item {
+    font-size: 0.8rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .event-date {
+    padding: 0.8rem 0.5rem;
+    min-width: 90px;
+  }
+
+  .date-main {
+    font-size: 1.6rem;
+  }
+
+  .date-month {
+    font-size: 0.9rem;
+  }
+
+  .event-stats {
+    padding: 1.2rem 0;
+  }
+
+  .stat-item .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .stat-item .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .glow-orb-1,
+  .glow-orb-2,
+  .glow-orb-3 {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    transform: scale(0.5);
   }
 }
