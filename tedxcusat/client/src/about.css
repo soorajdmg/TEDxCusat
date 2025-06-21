@@ -1,6 +1,7 @@
 .about-section {
   position: relative;
   padding: 6rem 0;
+  padding-bottom: 0;
   background: #000000;
   overflow: hidden;
   min-height: 100vh;
@@ -338,33 +339,6 @@
   color: #d1d5db;
   line-height: 1.7;
   font-weight: 300;
-}
-
-
-.license-section {
-  text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 2rem;
-  padding: 3rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.license-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ef4444, transparent);
-}
-
-.license-content {
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .tedx-logo {

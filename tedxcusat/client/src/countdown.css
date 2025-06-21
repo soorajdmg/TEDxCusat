@@ -31,6 +31,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, #ffffff 0%, #ef4444 100%);
+    /* background: red; */
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

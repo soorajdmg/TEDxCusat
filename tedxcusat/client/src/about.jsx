@@ -139,19 +139,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* TEDx License */}
-        <div className="license-section animate-on-scroll">
-          <div className="license-content">
-            <div className="tedx-logo">
-              <span className="about-ted">TED</span>
-              <span className="about-x">x</span>
-            </div>
-            <p className="license-text">
-              This independent TEDx event is operated under license from TED, following the same 
-              format and high standards that have made TED talks a global phenomenon for spreading ideas.
-            </p>
-          </div>
-        </div>
+        
       </div>
     </section>
   );
