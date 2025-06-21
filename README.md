@@ -1,24 +1,42 @@
 # 🎤 TEDxCUSAT 2025 - Recruitment Task Submission  
 **Full-Stack Web Application (Frontend + Backend)**  
-Created as part of the official TEDxCUSAT Tech Team recruitment process – 2025
-
----
-
-![tedx-cusat-preview]() 
-
----
+This is my submission for the TEDxCUSAT 2025 Tech Team recruitment, showcasing a full-stack web application built from scratch - designed, developed, and deployed by me.
 
 ## 📌 Hosted Links
 
 - 🔗 **Frontend (Landing Page)**: https://tedxcusat-sooraj.onrender.com/
 - 🔗 **Backend API**: https://tedxcusat-backend.onrender.com
 
+### Demo Admin Account
+
+To explore the **admin-specific features**, you can log in using the following credentials:
+
+> **Email:** `admin@tedxcusat.com`  
+> **Password:** `Admin@123`
+
 
 ## 📖 Introduction
 
 This full-stack website was developed as part of the **Tech Team Recruitment Task** for TEDxCUSAT 2025. I applied for both **Frontend** and **Backend Developer** roles and completed the required tasks individually.
 
-This project is **not a clone** but an **original implementation** built from scratch, showcasing my ability to design, code, and deploy a complete system.
+This is an original, custom-built solution crafted entirely from scratch to match the recruitment task criteria.
+
+## 🧰 Tech Stack
+
+**Frontend:** React.js, CSS3  
+**Backend:** Node.js, Express.js, MongoDB, JWT, bcrypt, Google OAuth  
+**Deployment:** Render (Frontend & Backend)
+
+## 🧠 What I Built
+
+I built a **full-stack TEDx landing platform** that not only meets the recruitment task requirements, but goes beyond by offering:
+
+- A **fully custom-designed React frontend** using handmade CSS, built mobile-first and added subtle and smooth animations.
+- A backend API with **robust authentication** (email/password + Google OAuth), JWT-based auth flows, role-based access, and secure password storage.
+- A **working admin system**, with a separate login account and protected API routes.
+- Creative sections like a countdown timer and video background to enhance UX and reflect the TEDx brand vibe.
+- Hosted and tested on live URLs — ready to scale or demo anytime.
+
 
 ## 🚀 Frontend Task – React Landing Page
 
@@ -82,6 +100,14 @@ GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 ```
 
+## 📸 Preview
+
+| Hero Section | Speaker Slider | Countdown Timer | ADMIN Login |
+|--------------|----------------|-----------------|--------------|
+| ![tedxcusat-hero](https://github.com/user-attachments/assets/7785738a-cee7-4bce-8e16-da796c05898f)| ![tedxcusat-speakers](https://github.com/user-attachments/assets/2db9ea79-7c1b-4d0e-8d6a-ddc1073437c0) | ![tedxcusat-countdown](https://github.com/user-attachments/assets/2a82769e-11f4-4dba-8715-db1edb4d5d72) | ![tedxcusat-admin](https://github.com/user-attachments/assets/7d459107-c1f3-4504-968d-6830e80b20ae) |
+
+
+
 ## 🎮 Usage
 
 ### Frontend Experience
@@ -102,7 +128,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 
 ## 🤝 Contributing
 
-We welcome contributions to make Clara even smarter and more efficient! Here’s how you can help:
+Here’s how to contribute efficiently:
 
 1. Fork the Project.
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
@@ -120,8 +146,3 @@ Developer: Applying for TEDxCUSAT Tech Team - Frontend & Backend Developer Posit
 ---
 
 ⭐️ ⭐️ If this project showcases the skills you're looking for in a full-stack developer, give it a star!
----
----
----
----
----
