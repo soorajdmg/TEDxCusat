@@ -1,7 +1,5 @@
 .auth-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
@@ -76,6 +74,43 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.9rem;
+}
+
+.login-modal {
+  max-width: 460px;
+  max-height: 85vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(239, 68, 68, 0.6) rgba(255, 255, 255, 0.1);
+}
+
+
+.login-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.login-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 8px 0;
+
+  transition: none;
+}
+
+.login-modal::-webkit-scrollbar-thumb {
+  background: rgba(239, 68, 68, 0.6);
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  will-change: background-color;
+}
+
+.login-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.login-modal::-webkit-scrollbar-thumb:active {
+  background: rgba(239, 68, 68, 0.9);
 }
 
 .error-icon {

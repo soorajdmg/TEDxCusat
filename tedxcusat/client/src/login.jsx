@@ -255,7 +255,7 @@ const Login = ({ onClose, onSwitchToSignup, onLoginSuccess }) => {
 
     return (
         <div className="auth-modal-overlay" onClick={onClose}>
-            <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="auth-modal login-modal" onClick={(e) => e.stopPropagation()}>
                 <div className="auth-modal-header">
                     <h2>Welcome Back</h2>
                     <button className="auth-close" onClick={onClose}>×</button>
